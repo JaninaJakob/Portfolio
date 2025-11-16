@@ -1,0 +1,25 @@
+/* Handy */
+@media (max-width: 600px) {
+    .page-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(500px, 1fr) 1fr; /* 3 Breite geändert */
+      justify-content: center; /* zentriert den mittleren Bereich */
+    }
+  
+    .navigation:hover #main-nav {
+      display: none; /* deaktiviert Hover auf kleinen Screens */
+    }
+  
+    .nav-three-col {
+      grid-template-columns: repeat(3, 1fr); /* optional 2 pro Reihe auf kleineren Screens */
+    }
+  }
+
+/* Desktop: 3 Spalten, Nav in Spalte 2 (= zweites Drittel) */
+@media (min-width: 1024px) {
+  .page-grid {
+    grid-template-columns: 1fr 1fr 1fr; /* 3 gleich breite Drittel */
+  }}
+
+
+  

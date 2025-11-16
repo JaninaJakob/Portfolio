@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work Grid Filter</title>
+  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="test.js">
+</head>
+
+<body>
+
+<header class="navigation">
+  <div class="nav-container">
+    <a class="logo" href="#">JJ</a>
+    <button class="burger" aria-controls="main-nav">☰</button>
+  </div>
+
+  <nav id="main-nav">
+    <ul class="nav-three-col nav-links">
+      <li><a href="#" data-filter="all">Alle</a></li>
+      <li><a href="#" data-filter="webdesign">Webdesign</a></li>
+      <li><a href="#" data-filter="blender">Blender</a></li>
+      <li><a href="#" data-filter="fotografie">Fotografie</a></li>
+      <li><a href="#" data-filter="typografie">Typografie</a></li>
+      <li><a href="#" data-filter="uiux">UI/UX</a></li>
+      <li><a href="#" data-filter="gamedesign">Gamedesign</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+
+<main class="wrap">
+  <ul class="work-grid">
+
+    <!-- Beispiel-Projekte -->
+
+    <li data-cat="blender">
+      <a class="card" href="#">
+        <div class="thumb"><img src="/covers/cd1.jpg"></div>
+        <div class="meta"><span class="kicker">Projekt</span><br><span class="title">Blender</span></div>
+      </a>
+    </li>
+
+    <li data-cat="gamedesign">
+      <a class="card" href="#">
+        <div class="thumb"><img src="/covers/cd2.jpg"></div>
+        <div class="meta"><span class="kicker">Projekt</span><br><span class="title">Gamedesign</span></div>
+      </a>
+    </li>
+
+    <li data-cat="fotografie">
+      <a class="card" href="#">
+        <div class="thumb"><img src="/covers/cd3.jpg"></div>
+        <div class="meta"><span class="kicker">Projekt</span><br><span class="title">Fotografie</span></div>
+      </a>
+    </li>
+
+    <!-- weitere Beispiele -->
+    <li data-cat="blender"><a class="card" href="#"><div class="thumb"><img src="/covers/cd4.jpg"></div><div class="meta"><span class="kicker">Projekt</span><br><span class="title">Blender</span></div></a></li>
+    <li data-cat="blender"><a class="card" href="#"><div class="thumb"><img src="/covers/cd4.jpg"></div><div class="meta"><span class="kicker">Projekt</span><br><span class="title">Blender</span></div></a></li>
+
+  </ul>
+</main>
+
+
+<script src="script.js"></script>
+</body>
+</html>
