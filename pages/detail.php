@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/main.js" defer></script>
+
+
+
 </head>
 <body class="detail-page">
 
-    <!-- Logo Janina -->
-    <a href="/pages/contact.php" class="corner-logo">
-        <img src="/covers/Logo_def_weiss.png" alt="Foto von Janina">
-    </a>
+  <section class="hero-section" id="heroSection">
+    <div class="hero-sticky">
+      <div class="hero-frame" id="heroFrame">
 
-    <!-- Navigation -->
-    <div class="ende-navigation">
-        <?php include __DIR__ . '/php/navigation.php'; ?>
-    </div>
+        <!-- Logo 
+        <a href="/pages/contact.php" class="corner-logo">
+            <img src="/covers/Logo_def_weiss.png" alt="Foto von Janina">
+          </a> -->
 
-    <!-- HERO-Bereich fuer das Projekt -->
-    <section class="hero-section" id="heroSection">
-  <div class="hero-sticky">
-    <div class="hero-frame" id="heroFrame">
-
-      <img
-        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80"
-        alt=""
-      >
-
-      <div class="hero-text">
-        <div class="hero-title">The Exit Interview</div>
-        <div class="hero-subtitle">
-          A short film about
-          silence, endings
-          and transition
+        <!-- Navigation -->
+        <div class="ende-navigation">
+          <?php include __DIR__ . '/../php/navigation.php'; ?>
         </div>
-      </div>
 
+        <img
+          src="/covers/cd1.jpg"
+          alt=""
+        >
+
+        <div class="hero-text">
+          <div class="hero-title">Blender</div>
+          <div class="hero-subtitle">
+          Dj Watson & BEATBUS der Musiklieferant
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 </body>
-
-    <?php include __DIR__ . '/../php/footer.php'; ?>
-    
 </html>
+
+
+
+
+

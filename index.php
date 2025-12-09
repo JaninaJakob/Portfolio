@@ -39,11 +39,9 @@
         <!-- Dj Watson & BEATBUS der Musiklieferant -->
         <div class="panel" tabindex="0" data-index="0">
           <img class="cover" src="/covers/cd1.jpg" alt="">
-          <<a
-            href="/pages/detail.php"
-            class="panel-link"
-            aria-label="Dj Watson & BEATBUS der Musiklieferant"
-          ></a>
+          <a href="/pages/detail.php" class="panel-link"></a>
+
+
 
           <div class="beschriftung">
             <div class="projekt">Dj Watson & BEATBUS der Musiklieferant</div>

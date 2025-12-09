@@ -670,7 +670,86 @@ body {
 
 
 
-/* Detailseite von den Projekten – nur fuer detail.php (body.detail-page) */
+
+/* Detailseite: Scroll Hero nur auf detail.php */
+body.detail-page {
+  background: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Scroll-Section */
+body.detail-page .hero-section {
+  height: 240vh;
+}
+
+/* Sticky Viewport */
+body.detail-page .hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Bild-Frame */
+body.detail-page .hero-frame {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transform-origin: center center;
+  border-radius: 0;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  background: black;
+}
+
+/* Bild */
+body.detail-page .hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text Overlay */
+body.detail-page .hero-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6vh 6vw;
+  pointer-events: none;
+}
+
+body.detail-page .hero-title {
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+body.detail-page .hero-subtitle {
+  max-width: 520px;
+  font-size: clamp(26px, 4vw, 52px);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+/* leichter Kontrast auf Text */
+body.detail-page .hero-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.15)
+  );
+  z-index: -1;
+}
 
 
 
