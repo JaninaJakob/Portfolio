@@ -99,12 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// Kategorie-Filter für CD-Galerie
+const cat = new URLSearchParams(window.location.search).get("cat");
+
+document.querySelectorAll("li[data-category]").forEach(item => {
+  if (!cat || item.dataset.category === cat) {
+    item.style.display = "block";
+  } else {
+    item.style.display = "none";
+  }
+});
 
 
 
-
-
-
-
-
-
+// detail.php

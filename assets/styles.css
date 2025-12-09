@@ -1,3 +1,19 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin: 0%;
+  padding: 0%;
+  letter-spacing: 0.01rem;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+
+
+
+
 /* HEADER von jeder Seite*/
 .page-grid {
   display: grid;
@@ -5,21 +21,27 @@
   margin-top: 24px;
 }
 
-
 .navigation {
-  grid-column: 2;              /* steht mittig im 3-Spalten-Grid */
+  position: absolute;
+  top: 12px;                /* Abstand nach oben */
+  left: 50%;
+  transform: translateX(-50%);  /* perfekte Zentrierung */
+
   background: #000;
-  width: 100%;                 /* nimmt die ganze Spalte ein */
-  max-width: 360px;     /* << kleiner machen */
-  margin: 0 auto;
-  padding: 10px 12px;
-  border-radius: 12px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 14px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000;
+
   box-sizing: border-box;
-  border: 1px solid #555;
-  position: sticky;
-  z-index: 100;         /* ueber Content */
 }
 
+.ende-navigation {
+  bottom: 50px;
+}
 
   /* Navigation beim Hover aufklappen */
 .navigation:hover #main-nav {
@@ -39,7 +61,7 @@
   }
 
   .logo {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -86,7 +108,7 @@
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
-    width: 100%;                  /* 🔥 volle Breite der Navigation */
+    width: 100%;                  /* volle Breite der Navigation */
     box-sizing: border-box;       /* verhindert, dass Padding Breite verändert */
     text-align: left;
     transition: all 0.3s ease;
@@ -96,7 +118,7 @@
   .nav-links a:hover {
     background: #2d2d2d;           /* Hover-Farbe */
     color: #fff;
-    transform: scale(1.05);        /* kleiner Zoom-Effekt beim Hover */
+    /*transform: scale(1.05);        /* kleiner Zoom-Effekt beim Hover */
     border-color: #2d2d2d;
   }
 
@@ -124,24 +146,27 @@
   width: 100%;
   padding: 0.6rem;
   text-decoration: none;
-  color: white;
-  background: #000;
+  color: rgb(255, 255, 255);
+  background: #ffffff;
   border-radius: 8px;
   transition: background 0.2s;
 }
 
 .nav-three-col a:hover {
-  background: #000;
+  background: #3a3a3a;
 }
 
 /* Zustand: aktiv / geklickt / aktuelle Seite */
 .nav-three-col a.active,
 .nav-three-col a:focus,
 .nav-three-col a:active {
-  background: linear-gradient(to bottom, #000 0%, #111 100%);
-  box-shadow: 0 0 10px rgba(255,255,255,0.7) inset;
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.15); /* leicht weiss, transparenter Effekt */
+  backdrop-filter: blur(4px);            /* optional: leichter Glas-Effekt */
+  border: none;                          /* kein Rand */
+  box-shadow: none;                      /* kein Glow */
+  color: #fff;                           /* Text bleibt weiss */
 }
+
 
 
 
@@ -172,6 +197,12 @@
     height: 2px;
     background: white;
   }
+  
+  /* Wenn die Navigation aufgeklappt ist (Hover) → nur noch eine Linie */
+.navigation:hover .burger span:nth-child(2),
+.navigation:hover .burger span:nth-child(3) {
+  display: none;      /* zweite und dritte Linie ausblenden */
+}
 
 
 
@@ -209,31 +240,43 @@
 /* Grid für die Buttons */
 .nav-three-col {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* ⬅ Spalten duennen sich notfalls */
   gap: 8px;
-  width: 100%; /* passt sich an Containerbreite an */
+  width: 100%;
   box-sizing: border-box;
 }
+
 
 .nav-three-col li {
   list-style: none;
 }
 
 .nav-three-col a {
-  display: block;
+  display: flex;                 /* Flexbox → perfekte Zentrierung */
+  justify-content: center;       /* horizontal mittig */
+  align-items: center;           /* vertikal mittig */
+  
   width: 100%;
-  text-align: center;
-  padding: 10px;
+  padding: 8px 6px;              /* kleiner, damit mehr Platz bleibt */
+  
   background: #111;
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 8px;
-  text-decoration: none;
+  
   color: #fff;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 14px;               /* ⬅ kleinere Schrift */
+  line-height: 1.1;
+  text-align: center;
+
+  text-decoration: none;
+
+  white-space: normal;           /* Umbruch erlaubt */
+  overflow: visible;
 }
+
+
+
 
 /* Toggle-Design bei Klick */
 .nav-three-col a.active {
@@ -275,7 +318,7 @@ header.cd-head p{margin:0; color:var(--muted)}
 /* FRAME + RACK */
 .frame {
   max-width: 1200px;
-  margin: 20px auto 60px;        /* zentriert auf Seite */
+  margin: 40px auto 10px;        /* Abstand zum Rand oben und unten */
   padding: var(--gap);           /* gleichmäßiger Abstand rundum */
   border-radius: var(--radius);
   background: linear-gradient(
@@ -286,6 +329,7 @@ header.cd-head p{margin:0; color:var(--muted)}
   display: flex;                 /* wichtig: Inhalt zentrieren */
   justify-content: center;       /* Rack horizontal zentrieren */
   box-sizing: border-box;
+  
 }
 
 /* RACK */
@@ -453,8 +497,8 @@ body{
 /* Grid */
 .work-grid{
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 2px;
+  padding: 25px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--gap);
@@ -509,6 +553,149 @@ body{
 
 
 
+/* Filterseite Wasserzeichen 50% */
+.work-grid li.is-dimmed .card {
+  opacity: 0.5;
+  filter: grayscale(80%);
+}
+
+/* Optional: nicht anklickbar machen */
+.work-grid li.is-dimmed .card {
+  pointer-events: none;
+}
 
 
 
+
+
+
+
+/* contact.php */
+/* Schrift einbinden */
+@font-face {
+  font-family: "Ole";
+  src: url("fonts/Ole-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ole", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+
+
+.about-hero {
+  position: relative;
+  height: 100vh;                 /* sichtbare Hoehe ohne Scroll */
+  width: 100%;
+  background-image: url("/covers/contact_01.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Dunkles Overlay ueber dem Bild */
+.about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+/* Container fuer die zwei horizontalen Balken */
+.about-stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;                     /* Container geht bis ganz unten */
+  display: flex;
+  flex-direction: column;        /* Balken untereinander */
+  z-index: 1;
+}
+
+/* Die Balken selbst */
+.about-stripe {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  display: flex;
+  align-items: center;           /* Text vertikal mittig */
+  justify-content: flex-start;   /* oder center, wenn du es willst */
+  font-size: 1.5rem;
+  padding: 0 80px;               /* horizontaler Abstand */
+}
+
+/* Oberer Balken: feste Hoehe */
+.about-stripe:first-child {
+  min-height: 230px;
+}
+
+/* Abstand zwischen oberem und unterem Balken */
+.about-stripe + .about-stripe {
+  margin-top: 90px;
+}
+
+/* Unterer Balken: fuellt den Rest des sichtbaren Bereichs */
+.about-stripe:last-child {
+  flex: 1 1 auto;
+}
+
+/* ABOUT ME Titel unten */
+.about-title {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(4rem, 12vw, 10rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+/* Detailseite von den Projekten – nur fuer detail.php (body.detail-page) */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 0px;
+  margin-top: 30px;
+  color: #787878;
+  font-size: 0.8rem;
+}
+.footer a {
+  color: #787878;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+  color: #787878;
+}

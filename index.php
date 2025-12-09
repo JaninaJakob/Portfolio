@@ -21,35 +21,15 @@
 
     <body>
          <!-- Logo Janina -->
-          <a href="contact.html" class="corner-logo">
-            <img src="/covers/Logo_def_weiss.png" alt="">
+          <a href="/pages/contact.php" class="corner-logo">
+            <img src="/covers/Logo_def_weiss.png" alt="Foto von Janina">
           </a>
 
-        <div class="page-grid">
-            <header class="navigation">
-              <div class="nav-container">
-                <a class="logo" href="index.html">JJ</a>
-      
-                <!-- Button Navigation -->
-                <button class="burger" aria-controls="main-nav" aria-expanded="false" aria-label="Menue oeffnen" id="burger-btn">
-                  <span></span><span></span><span></span>
-                </button>
-              </div>
 
-        
-            <nav id="main-nav">
-                <ul class="nav-three-col nav-links">
-                  <li><a href="#">Webdesign</a></li>
-                  <li><a href="#">Blender</a></li>
-                  <li><a href="#">Fotografie</a></li>
-                  <li><a href="#">Typografie</a></li>
-                  <li><a href="#">UI/UX</a></li>
-                  <li><a href="#">Gamedesign</a></li>
-                </ul>
-            </nav>
-         </div>
         </header>
-
+    <div class= "ende-navigation">
+    <?php include __DIR__ . '/php/navigation.php'; ?>
+    </div>
 
     <!-- CD BEREICH -->
 
@@ -57,11 +37,22 @@
       <div class="rack" id="rack" aria-label="CD Galerie">
 
         <!-- Dj Watson & BEATBUS der Musiklieferant -->
-        <div class="panel" tabindex="0" data-index="0"> <!-- Panel = Container CD, Tabindex = fokussierbar , data-index = Index für JavaScript beim klicken-->
-          <img class="cover" src="/covers/cd1.jpg" alt=""> <!-- CD Cover Bild -->
-          <a href="#" aria-label="Cosmic Drift – Ari Moon"></a> <!-- klickbar-->
-          <div class="beschriftung"><div class="projekt">Dj Watson & BEATBUS der Musiklieferant</div><div class="filter">Blender</div></div> <!-- Textblock-->
+        <div class="panel" tabindex="0" data-index="0">
+          <img class="cover" src="/covers/cd1.jpg" alt="">
+          <<a
+            href="/pages/detail.php"
+            class="panel-link"
+            aria-label="Dj Watson & BEATBUS der Musiklieferant"
+          ></a>
+
+          <div class="beschriftung">
+            <div class="projekt">Dj Watson & BEATBUS der Musiklieferant</div>
+            <div class="filter">Blender</div>
+          </div>
         </div>
+
+ 
+
         <!-- CD 2 -->
         <div class="panel" tabindex="0" data-index="1"> 
           <img class="cover" src="/covers/cd2.jpg" alt="">
@@ -152,6 +143,9 @@
       </div>
     </section>
 
+    <?php include __DIR__ . '/php/footer.php'; ?>
 
   </body>
+
+  
 </html>
