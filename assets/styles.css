@@ -18,7 +18,7 @@ body {
 .page-grid {
   display: grid;
   grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
-  margin-top: 24px;
+  margin-top: 0px;
 }
 
 .navigation {
@@ -40,7 +40,11 @@ body {
 }
 
 .ende-navigation {
-  bottom: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
   /* Navigation beim Hover aufklappen */
@@ -678,6 +682,14 @@ body.detail-page {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* Header mit Navigation */
+.detail-header {
+  position: relative; /* oder position: sticky; top: 0; wenn du sie immer oben sehen willst */
+  z-index: 20;
+  width: 100%;
+  background: rgba(0,0,0,0.85);
+}
+
 /* Scroll-Section */
 body.detail-page .hero-section {
   height: 240vh;
@@ -702,7 +714,7 @@ body.detail-page .hero-frame {
   transform-origin: center center;
   border-radius: 0;
   box-shadow: 0 0 0 rgba(0,0,0,0);
-  background: black;
+  background: #000;
 }
 
 /* Bild */
@@ -713,7 +725,7 @@ body.detail-page .hero-frame img {
   display: block;
 }
 
-/* Text Overlay */
+/* Text wie vorher ueber dem Bild */
 body.detail-page .hero-text {
   position: absolute;
   inset: 0;
@@ -721,7 +733,7 @@ body.detail-page .hero-text {
   flex-direction: column;
   justify-content: space-between;
   padding: 6vh 6vw;
-  pointer-events: none;
+  pointer-events: none; /* Klicks gehen an Navigation/Content, nicht an Text */
 }
 
 body.detail-page .hero-title {
@@ -729,6 +741,7 @@ body.detail-page .hero-title {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   opacity: 0.9;
+  transition: opacity 0.2s ease-out;
 }
 
 body.detail-page .hero-subtitle {
@@ -736,6 +749,7 @@ body.detail-page .hero-subtitle {
   font-size: clamp(26px, 4vw, 52px);
   line-height: 1.1;
   font-weight: 500;
+  transition: opacity 0.2s ease-out;
 }
 
 /* leichter Kontrast auf Text */
@@ -750,6 +764,18 @@ body.detail-page .hero-text::before {
   );
   z-index: -1;
 }
+
+/* Content unter dem Hero */
+.detail-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+
+
+
+
 
 
 

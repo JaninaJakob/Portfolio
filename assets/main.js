@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // CD-Galerie Interaktivitaet
+  // CD-Galerie Interaktivitaet (unveraendert)
   const rack = document.getElementById('rack');
   if (rack) {
     const panels = Array.from(rack.querySelectorAll('.panel'));
@@ -104,29 +104,35 @@ document.addEventListener('DOMContentLoaded', () => {
       : 'none';
   });
 
-  // =========================
   // Scroll-Hero fuer detail.php
-  // =========================
   const heroSection = document.getElementById('heroSection');
-  const heroFrame   = document.getElementById('heroFrame');
+  const heroFrame = document.getElementById('heroFrame');
+  const heroTitle = document.querySelector('.hero-title');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
 
   if (heroSection && heroFrame) {
     const maxRotate = (Math.random() * 8 - 4); // -4 .. +4 Grad
 
     function onScroll() {
-      const scrollTop   = window.scrollY;
-      const sectionTop  = heroSection.offsetTop;
-      const sectionEnd  = sectionTop + window.innerHeight;
+      const scrollTop = window.scrollY;
+      const sectionTop = heroSection.offsetTop;
+      const sectionEnd = sectionTop + window.innerHeight;
 
       let progress = (scrollTop - sectionTop) / (sectionEnd - sectionTop);
       progress = Math.max(0, Math.min(1, progress));
 
-      const scale  = 1 - progress * 0.65;     // drehung 
-      const rotate = maxRotate * progress;    // 0 -> random
+      const scale = 1 - progress * 0.65;
+      const rotate = maxRotate * progress;
 
-      heroFrame.style.transform   = `scale(${scale}) rotate(${rotate}deg)`;
+      // Text langsam ausblenden (wie vorher)
+      const textOpacity = 1 - progress;
+      if (heroTitle) heroTitle.style.opacity = textOpacity.toString();
+      if (heroSubtitle) heroSubtitle.style.opacity = textOpacity.toString();
+
+      // Nur das Bild transformieren
+      heroFrame.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
       heroFrame.style.borderRadius = `${progress * 32}px`;
-      heroFrame.style.boxShadow    = `0 40px 100px rgba(0,0,0,${progress * 0.35})`;
+      heroFrame.style.boxShadow = `0 40px 100px rgba(0,0,0,${progress * 0.35})`;
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -136,8 +142,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-// detail.php
