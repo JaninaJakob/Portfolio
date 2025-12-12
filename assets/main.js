@@ -141,4 +141,159 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+const heroSection = document.getElementById('heroSection');
+const heroFrame = document.getElementById('heroFrame');
+const heroTitle = document.querySelector('.hero-title');
+const heroSubtitle = document.querySelector('.hero-subtitle');
+const heroBigtext = document.getElementById('heroBigtext'); // NEU
+
+if (heroSection && heroFrame) {
+  const maxRotate = (Math.random() * 8 - 4); // -4 .. +4 Grad
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const sectionTop = heroSection.offsetTop;
+    const sectionEnd = sectionTop + window.innerHeight;
+
+    let progress = (scrollTop - sectionTop) / (sectionEnd - sectionTop);
+    progress = Math.max(0, Math.min(1, progress));
+
+    const scale = 1 - progress * 0.65;
+    const rotate = maxRotate * progress;
+
+    // Text langsam ausblenden
+    const textOpacity = 1 - progress;
+    if (heroTitle) heroTitle.style.opacity = String(textOpacity);
+    if (heroSubtitle) heroSubtitle.style.opacity = String(textOpacity);
+
+    // Bild transformieren
+    heroFrame.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+    heroFrame.style.borderRadius = `${progress * 32}px`;
+    heroFrame.style.boxShadow = `0 40px 100px rgba(0,0,0,${progress * 0.35})`;
+
+    // NEU: "BILDER" erst gegen Ende einblenden
+    if (heroBigtext) {
+      const revealStart = 0.72; // ab wann einblenden (0..1)
+      const t = (progress - revealStart) / (1 - revealStart);
+      const eased = Math.max(0, Math.min(1, t));
+
+      heroBigtext.style.opacity = String(eased);
+      heroBigtext.style.transform = `translateY(-50%) translateY(${(1 - eased) * 20}px)`;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+}
+
+(() => {
+  const viewport = document.getElementById('polaroidViewport');
+  const track = document.getElementById('polaroidTrack');
+  if (!viewport || !track) return;
+
+  /* ========= SETUP: Inhalte klonen ========= */
+  const items = Array.from(track.children);
+  const cloneCount = items.length;
+
+  // Vorne & hinten klonen
+  items.forEach(el => track.appendChild(el.cloneNode(true)));
+  items.slice().reverse().forEach(el => {
+    track.insertBefore(el.cloneNode(true), track.firstChild);
+  });
+
+  // Nach dem Klonen in die "echte" Mitte springen
+  let itemWidth = items[0].getBoundingClientRect().width;
+  let gap = parseFloat(getComputedStyle(track).gap) || 0;
+  let step = itemWidth + gap;
+
+  let startOffset = step * cloneCount;
+  viewport.scrollLeft = startOffset;
+
+  /* ========= ENDLOS-LOGIK ========= */
+  function checkLoop() {
+    const maxScroll = step * cloneCount * 2;
+    if (viewport.scrollLeft <= step) {
+      viewport.scrollLeft += step * cloneCount;
+    }
+    if (viewport.scrollLeft >= maxScroll) {
+      viewport.scrollLeft -= step * cloneCount;
+    }
+  }
+
+  viewport.addEventListener('scroll', checkLoop, { passive: true });
+
+  /* ========= DRAG MIT MAUS ========= */
+  let isDown = false;
+  let startX = 0;
+  let startScroll = 0;
+
+  viewport.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX;
+    startScroll = viewport.scrollLeft;
+    viewport.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    viewport.style.cursor = '';
+  });
+
+  viewport.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    viewport.scrollLeft = startScroll - (e.pageX - startX);
+  });
+
+  /* ========= SNAP (optional, sehr angenehm) ========= */
+  let snapTimeout;
+  viewport.addEventListener('scroll', () => {
+    clearTimeout(snapTimeout);
+    snapTimeout = setTimeout(() => {
+      const snapped = Math.round(viewport.scrollLeft / step) * step;
+      viewport.scrollTo({ left: snapped, behavior: 'smooth' });
+    }, 120);
+  });
+})();
+
+(() => {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('lightboxClose');
+
+  if (!lightbox || !lightboxImg) return;
+
+  // Klick auf Polaroid
+  document.querySelectorAll('.polaroid img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      lightboxImg.src = img.src;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Schliessen
+  function closeLightbox(){
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+})();
+
+
 

@@ -36,7 +36,66 @@
         </div>
       </div>
 
+      <!-- Grosser Text nach dem Scrollen -->
+      <div class="hero-bigtext" id="heroBigtext">BILDER</div>
+
     </div>
+  </section>
+
+  <!-- ================= POLAROID SWIPE / SCROLL GALERIE (ohne Button) ================= -->
+  <section class="polaroid-gallery" id="polaroidGallery" aria-label="Polaroid Galerie">
+    <div class="polaroid-viewport" id="polaroidViewport">
+      <div class="polaroid-track" id="polaroidTrack">
+
+        <figure class="polaroid">
+          <img src="/img/bild_01.jpg" alt="Live 1" loading="lazy">
+          <figcaption>Live</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_02.jpg" alt="Detail 1" loading="lazy">
+          <figcaption>Detail</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_03.jpg" alt="Crowd" loading="lazy">
+          <figcaption>Crowd</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_04.jpg" alt="Beatbus" loading="lazy">
+          <figcaption>Beatbus</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_05.jpg" alt="Beatbus" loading="lazy">
+          <figcaption>Beatbus</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_06.jpg" alt="Beatbus" loading="lazy">
+          <figcaption>Beatbus</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_07.jpg" alt="Beatbus" loading="lazy">
+          <figcaption>Beatbus</figcaption>
+        </figure>
+
+        <figure class="polaroid">
+          <img src="/img/bild_08.jpg" alt="Beatbus" loading="lazy">
+          <figcaption>Beatbus</figcaption>
+        </figure>
+
+        <!-- Fuege hier einfach beliebig viele weitere <figure class="polaroid"> ... </figure> hinzu -->
+
+      </div>
+    </div>
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Schliessen">×</button>
+  <img id="lightboxImg" alt="">
+</div>
+
   </section>
 
   <!-- Normaler Content darunter -->
@@ -46,9 +105,10 @@
     </p>
   </main>
 
+  
+
 </body>
 </html>
-
 
 
 
