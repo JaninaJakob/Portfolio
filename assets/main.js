@@ -295,5 +295,53 @@ if (heroSection && heroFrame) {
   });
 })();
 
+// Sound beim Bild-Kick
+document.addEventListener("DOMContentLoaded", () => {
+  const sound = document.getElementById("polaroidClickSound");
+  const polaroidImages = document.querySelectorAll(".polaroid img");
+
+  if (!sound || polaroidImages.length === 0) return;
+
+  polaroidImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      try {
+        sound.currentTime = 0; // bei schnellen Mehrfachklicks neu starten
+        sound.play();
+      } catch (e) {
+        // falls Browser blockiert oder ein Fehler auftritt: nichts tun
+      }
+    });
+  });
+});
+
+//Sound stoppt bei scrollen
+document.addEventListener("DOMContentLoaded", () => {
+  const sound = document.getElementById("polaroidClickSound");
+
+  if (!sound) return;
+
+  let isPlaying = false;
+
+  // Markiere, wenn Sound laeuft
+  sound.addEventListener("play", () => {
+    isPlaying = true;
+  });
+
+  sound.addEventListener("pause", () => {
+    isPlaying = false;
+  });
+
+  // Stoppe Sound bei Scroll
+  window.addEventListener("scroll", () => {
+    if (isPlaying) {
+      sound.pause();
+      sound.currentTime = 0;
+    }
+  }, { passive: true });
+});
+
+
+
+
 
 

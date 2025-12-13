@@ -44,6 +44,8 @@
 
   <!-- ================= POLAROID SWIPE / SCROLL GALERIE (ohne Button) ================= -->
   <section class="polaroid-gallery" id="polaroidGallery" aria-label="Polaroid Galerie">
+  <div class="polaroid-label"><strong>Einzelarbeit</strong><br>In Zusammenarbeit mit Dj Watson</div>
+  <br>
     <div class="polaroid-viewport" id="polaroidViewport">
       <div class="polaroid-track" id="polaroidTrack">
 
@@ -105,7 +107,10 @@
     </p>
   </main>
 
-  
+  <audio id="polaroidClickSound" preload="auto">
+  <source src="/mp4/sound_01.mp3" type="audio/mpeg">
+  <source src="" type="audio/ogg">
+</audio>
 
 </body>
 </html>

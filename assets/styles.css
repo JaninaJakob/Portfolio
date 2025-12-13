@@ -775,30 +775,45 @@ body.detail-page .hero-text::before {
 /* Grosses Wort "BILDER" */
 .hero-bigtext{
   position: absolute;
-  left: 0;
+  left: 2rem;
   top: 90%;
-  transform: translateY(-50%) translateY(20px); /* Start leicht versetzt */
+  transform: translateY(-50%) translateY(20px);
   opacity: 0;
   pointer-events: none;
 
   font-family: "Ole", sans-serif;
-  font-size: 100pt;              
+  font-size: 100pt;
   line-height: 0.85;
   letter-spacing: 0.02em;
-
-  color: transparent;
-  -webkit-text-stroke: 4px #fff; /* Outline wie bei deinem Look */
-  text-decoration-line:  4px #fff;
+  color: #fff;          /* Text ausfuellen */
 }
+
 
 
 
 /* Polaroid Slider Section */
-/* 3 Polaroids im Blick + sauberer Swipe ohne Scrollbar */
-.polaroid-gallery{
-  padding: 40px 0 90px;
-  background: transparent; /* oder #000, je nach Seite */
+.polaroid-gallery {
+  position: relative;
+  padding-top: 2.5rem; /* Platz fuer das Label schaffen */
 }
+
+/* Einzelarbeit, Gruppenarbeit */
+.polaroid-label {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  padding: 0.4rem 0.8rem;
+  background: #111;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+  text-transform: none; /* keine Grossbuchstaben mehr */
+}
+
 
 .polaroid-viewport{
   overflow-x: auto;
@@ -868,7 +883,7 @@ body.detail-page .hero-text::before {
   .polaroid{ flex-basis: 85%; }
 }
 
-/* ===== LIGHTBOX ===== */
+/* Bild öffnet sich */
 .lightbox{
   position: fixed;
   inset: 0;
